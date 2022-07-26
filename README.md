@@ -53,7 +53,7 @@ bases:
 
 Then pick and chose from patches our [example variants](https://github.com/Yolean/kubernetes-kafka/tree/master/variants) to tailor your Kafka setup.
 
-## Version history
+## Version histor
 
 | tag    | k8s ≥ | highlights  |
 | ------ | ----- | ----------- |
