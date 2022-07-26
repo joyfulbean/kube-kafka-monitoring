@@ -1,5 +1,7 @@
 # Kafka for Kubernetes
 
+Specail thanks to [@Yoolean](https://github.com/Yolean/kubernetes-kafka/issues/82#issuecomment-337532548)
+
 This community seeks to provide:
  * Production-worthy Kafka setup for persistent (domain- and ops-) data at small scale.
  * Operational knowledge, biased towards resilience over throughput, as Kubernetes manifest.
