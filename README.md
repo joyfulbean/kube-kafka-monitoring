@@ -14,6 +14,7 @@ Only tested in Amazon Linux2 EC2
 
 ```
 git clone https://github.com/joyfulbean/myset
+cd myset
 ./joyful_shell.sh
 ```
 >From now, kubectl is shortened to `kp`
