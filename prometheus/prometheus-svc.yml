@@ -14,7 +14,7 @@ spec:
   ports:
     - port: 9090
       protocol: TCP
-      nodeport: 32334
+      nodePort: 32334
       name: webui
   selector:
     app: prometheus

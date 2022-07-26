@@ -1830,7 +1830,7 @@ data:
     {
       "__inputs": [
         {
-          "name": "DS_PROMETHEUS",
+          "name": "DS_CORTEX",
           "label": "Prometheus",
           "description": "Prometheus Server",
           "type": "datasource",
@@ -1895,7 +1895,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "description": "Summed delta between High and Low watermark of all partitions in the given topic. Therefore not accurate for compacted topics that contain compacted records.",
           "fieldConfig": {
             "defaults": {
@@ -1997,7 +1997,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -2091,7 +2091,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -2181,7 +2181,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "description": "Summed delta between High and Low watermark of all partitions in the given topic. Therefore not accurate for compacted topics that contain compacted records.",
           "fieldConfig": {
             "defaults": {
@@ -2284,7 +2284,7 @@ data:
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -2370,7 +2370,7 @@ data:
           "valueName": "current"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -2469,7 +2469,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "description": "Log dir size across all partitions and brokers for the given topic.",
           "fieldConfig": {
             "defaults": {
@@ -2564,7 +2564,7 @@ data:
           }
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "${DS_CORTEX}",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -2672,7 +2672,7 @@ data:
           {
             "allValue": null,
             "current": {},
-            "datasource": "${DS_PROMETHEUS}",
+            "datasource": "${DS_CORTEX}",
             "definition": "label_values(kminion_kafka_topic_low_water_mark_sum, topic_name)",
             "error": null,
             "hide": 0,

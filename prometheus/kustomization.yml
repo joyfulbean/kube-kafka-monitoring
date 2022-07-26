@@ -4,6 +4,16 @@ bases:
 #- ../kafka
 #- ../variants/scale-1
 resources:
-- metrics-config.yml
-patchesStrategicMerge:
-- kafka-jmx-exporter-patch.yml
+- kafka-jmx-metrics-config.yml
+- kube-state-deployment.yml
+- kube-state-svc.yml
+- node-dir-exporter.yml
+- node-exporter-svc.yml
+- node-exporter.yml
+- prometheus-config.yml
+- prometheus-deployment.yml
+- prometheus-svc.yml
+- rules.yml
+
+  #patchesStrategicMerge:
+  #- kafka-jmx-exporter-patch.yml

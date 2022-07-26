@@ -1,0 +1,6 @@
+resources:
+- grafana-dashboard.yml
+- grafana-deploy.yml
+- grafana-secret.yml
+- grafana-svc.yml
+- import-dashboard-job.yml

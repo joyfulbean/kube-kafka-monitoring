@@ -10,12 +10,12 @@ metadata:
     app: prometheus
     component: node-exporter
 spec:
-  clusterIP: None
   ports:
     - name: prometheus-node-exporter
       port: 9100
+      nodePort: 30088
       protocol: TCP
   selector:
     app: prometheus
     component: node-exporter
-  type: ClusterIP
+  type: NodePort
