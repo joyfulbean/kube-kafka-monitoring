@@ -5,8 +5,10 @@ metadata:
   name: bootstrap
   namespace: kafka
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 9092
+    targetPort: 9092
+    nodePort: 31000
   selector:
     app: kafka

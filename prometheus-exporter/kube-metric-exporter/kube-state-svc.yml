@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kube-state-metrics
   name: kube-state-metrics
-  namespace: kube-system
+  namespace: monitoring
 spec:
   clusterIP: None
   ports:

@@ -1,4 +1,4 @@
-# kube-state-deployment.yaml
+#kube-state-deployment.yaml
 
 apiVersion: apps/v1
 kind: Deployment
@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kube-state-metrics
   name: kube-state-metrics
-  namespace: kube-system
+  namespace: monitoring
 spec:
   replicas: 1
   selector:

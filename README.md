@@ -60,16 +60,11 @@ Out of Cluster access is possible through [broker-outside-svc](https://github.co
 ## Monitoring
 
 ```
-# total kafka monitoring
-kubectl apply -k cmak
-
-# add 
+kubectl apply -k cmak 
 kubectl apply -k linkedin-burrow/
-
-# kafka metric gather
-kubectl --namespace kafka apply -f prometheus/metrics-config.yml
-kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus/kafka-jmx-exporter-patch.yml )"
-
+kubectl apply -k prometheus-exporter 
+kubectl apply -k  prometheus/
+kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus-exporter/jmx-exporter/kafka-jmx-exporter-patch.yml )"
 ```
 
  * [cmak](./cmak/)
@@ -82,7 +77,7 @@ kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus/kafk
    * can monitor the consumer lag
    * [check the rule set here](https://github.com/linkedin/Burrow/wiki/Consumer-Lag-Evaluation-Rules)
    * Dashboard URL: (ec2-ip):32337
-   * Metric URL: (ec2-ip):32338/metrics
+   * Metric URL: (ec2-ip):32339/metrics
  * [prometheus](./prometheus/)
    * [reference for proemetheus](https://github.com/prometheus/prometheus)
    * check the metrics here.
@@ -100,7 +95,6 @@ kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus/kafk
      * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/1860): 1860
    * [reference for kube-state-metric exporter](https://github.com/kubernetes/kube-state-metrics)
      * gather pods metric
-     * Metric URL: (ec2-ip):port/metrics
      * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/6417):6417
    * [reference for kminion](https://github.com/redpanda-data/kminion)
      * gather kafka consumr lag, cluster, topic metric
