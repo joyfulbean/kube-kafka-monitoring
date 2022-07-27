@@ -1,6 +1,6 @@
 # Kafka for Kubernetes
 
-Special thanks to [@Yoolean](https://github.com/Yolean/kubernetes-kafka/issues/82#issuecomment-337532548)
+Special thanks to [@Yoolean](https://github.com/Yolean/kubernetes-kafka)
 
 This repository seeks to provide:
  * Production-worthy Kafka setup for reproducing error and loading test 
@@ -54,8 +54,7 @@ kubectl apply -k kafka/
  * [./kafka](./kafka/)
    * change broker.properties in broker-config.yml and the number of kafka in kafka.yml
    
-Out of Cluster access is possible through [broker-outside-svc](https://github.com/joyfulbean/kube-kafka-monitoring/blob/master/kafka/outside-1.yml)
-
+Out of Cluster access is possible through [broker-outside-svc](https://github.com/joyfulbean/kube-kafka-monitoring/tree/master/kafka/broker-outside-svc)
 
 ## Monitoring
 
@@ -63,7 +62,7 @@ Out of Cluster access is possible through [broker-outside-svc](https://github.co
 kubectl apply -k cmak 
 kubectl apply -k linkedin-burrow/
 kubectl apply -k prometheus-exporter 
-kubectl apply -k  prometheus/
+kubectl apply -k prometheus/
 kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus-exporter/jmx-exporter/kafka-jmx-exporter-patch.yml )"
 ```
 
@@ -85,27 +84,29 @@ kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus-expo
    * Dashboard URL: (ec2-ip):32334
  * [prometheus-exporter](./prometheus-exporter/)
    * [reference for kafka-exporter](https://github.com/danielqsj/kafka_exporter)
-     * gather kafka metric.  
+     * collect kafka metric.  
      * to add more server, add args in kafka-exporter-deploy.yml
      * Metric URL: (ec2-ip):30055/metrics
      * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/7589): 7589 
    * [reference for node exporter](https://github.com/prometheus/node_exporter)
-     * gather host server metric
+     * collect host server metric
      * Metric URL: (ec2-ip):30088/metrics
      * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/1860): 1860
    * [reference for kube-state-metric exporter](https://github.com/kubernetes/kube-state-metrics)
-     * gather pods metric
+     * collect pods metric
      * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/6417):6417
    * [reference for kminion](https://github.com/redpanda-data/kminion)
-     * gather kafka consumr lag, cluster, topic metric
+     * collect kafka consumr lag, cluster, topic metric
      * Metric URL: (ec2-ip):30077/metrics
      * [Grafana Dashboard ID for topic](https://grafana.com/grafana/dashboards/14013):14013
      * [Grafana Dashboard ID for consumer group](https://grafana.com/grafana/dashboards/14014):14014
      * [Grafana Dashboard ID for cluster](https://grafana.com/grafana/dashboards/14012):14012
    * [reference for jmx-exporter]
-
+     * collect jmx metric
+     * Metric URL: (ec2-ip):32000/metrics
+     * [Grafana Dashboard ID for jmx](https://grafana.com/grafana/dashboards/11131):11131
  * [grafana-dashboard](https://github.com/grafana/grafana)
-    
+     * visualize metrics collected in prometheus
 
 ## Version
 
