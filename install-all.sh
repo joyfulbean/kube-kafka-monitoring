@@ -12,8 +12,6 @@ $SUDO yum -y install git
 # 
 # start kafka cluster 
 #
-git clone https://github.com/joyfulbean/kube-kafka-monitoring.git
-cd kube-kafka-monitoring
 kubectl apply -k rbac-namespace-default
 kubectl apply -k zookeeper/
 kubectl apply -k kafka/
