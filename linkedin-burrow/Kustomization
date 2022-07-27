@@ -4,5 +4,5 @@ kind: Kustomization
 
 resources:
 - ./burrow-config.yml
-- ./burrow-service.yml
-- ./burrow.yml
+- ./burrow-svc.yml
+- ./burrow-deploy.yml

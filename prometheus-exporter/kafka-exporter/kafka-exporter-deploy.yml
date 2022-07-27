@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-exporter
+  namespace: monitoring
+  labels:
+    app: kafka-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-exporter
+  template:
+    metadata:
+      labels:
+        app: kafka-exporter
+    spec:
+      containers:
+      - name: kafka-exporter
+        imagePullPolicy: IfNotPresent
+        image: danielqsj/kafka-exporter
+        args:
+            - "--kafka.server=172.17.0.10:9092"
+            - "--kafka.server=172.17.0.11:9092"
+            - "--kafka.server=172.17.0.12:9092"
+            - --log.enable-sarama
+        ports:
+        - name: http-metrics
+          containerPort: 9308
+          protocol: TCP

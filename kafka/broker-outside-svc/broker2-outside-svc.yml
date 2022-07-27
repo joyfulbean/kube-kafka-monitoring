@@ -11,5 +11,5 @@ spec:
   - protocol: TCP
     targetPort: 5556
     port: 32401
-    nodePort: 32401
+    nodePort: 30002
   type: NodePort

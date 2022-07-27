@@ -1,0 +1,4 @@
+resources:
+-  kube-state-deploy.yml 
+-  kube-state-svcaccount.yml
+-  kube-state-svc.yml

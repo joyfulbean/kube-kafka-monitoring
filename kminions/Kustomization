@@ -1,0 +1,3 @@
+resources:
+- kminion-svc.yml
+- kminion-deploy.yml

@@ -1,5 +1,6 @@
 resources:
 - node-reader.yml
 - pod-labler.yml
-- prometheus.yml
 - namespace.yml
+- prometheus-cluster-role.yml
+- kube-state-cluster-role.yml

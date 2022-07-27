@@ -1,0 +1,4 @@
+resources:
+- prometheus-config.yml
+- prometheus-deploy.yml
+- prometheus-svc.yml

@@ -1,12 +1,8 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana-core
+  name: grafana
   namespace: monitoring
-  labels:
-    app: grafana
-    component: core
 spec:
   replicas: 1
   selector:
@@ -14,53 +10,41 @@ spec:
       app: grafana
   template:
     metadata:
+      name: grafana
       labels:
         app: grafana
-        component: core
     spec:
       containers:
-      - image: grafana/grafana:4.2.0
-        name: grafana-core
-        imagePullPolicy: IfNotPresent
-        # env:
-        resources:
-          # keep request = limit to keep this container in guaranteed class
-          limits:
-            cpu: 100m
-            memory: 100Mi
-          requests:
-            cpu: 100m
-            memory: 100Mi
+      - name: grafana
+        image: grafana/grafana:latest
+        ports:
+        - name: grafana
+          containerPort: 3000
         env:
-          # The following env variables set up basic auth twith the default admin user and admin password.
-          - name: GF_AUTH_BASIC_ENABLED
-            value: "true"
-          - name: GF_SECURITY_ADMIN_USER
-            valueFrom:
-              secretKeyRef:
-                name: grafana
-                key: admin-username
-          - name: GF_SECURITY_ADMIN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: grafana
-                key: admin-password
-          - name: GF_AUTH_ANONYMOUS_ENABLED
-            value: "false"
-          # - name: GF_AUTH_ANONYMOUS_ORG_ROLE
-          #   value: Admin
-          # does not really work, because of template variables in exported dashboards:
-          # - name: GF_DASHBOARDS_JSON_ENABLED
-          #   value: "true"
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: 3000
-          # initialDelaySeconds: 30
-          # timeoutSeconds: 1
-        volumeMounts:
-        - name: grafana-persistent-storage
-          mountPath: /var/lib/grafana
-      volumes:
-      - name: grafana-persistent-storage
-        emptyDir: {}
+        - name: GF_SERVER_HTTP_PORT
+          value: "3000"
+        - name: GF_AUTH_BASIC_ENABLED
+          value: "false"
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "true"
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Admin
+        - name: GF_SERVER_ROOT_URL
+          value: /
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: monitoring
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port:   '3000'
+spec:
+  selector:
+    app: grafana
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 32335

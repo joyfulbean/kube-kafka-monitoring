@@ -1,0 +1,7 @@
+resources:
+- kafka-exporter-deploy.yml
+- kafka-exporter-svc.yml
+
+images:
+- name: danielqsj/kafka-exporter
+  newTag: latest

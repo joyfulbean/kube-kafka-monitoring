@@ -2,4 +2,4 @@ resources:
 - zoo-config.yml
 - pzoo-svc.yml
 - zoo-headless.yml
-- pzoo.yml
+- pzoo-stateful.yml

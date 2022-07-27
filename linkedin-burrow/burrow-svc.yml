@@ -11,12 +11,12 @@ spec:
   - name: web
     protocol: TCP
     port: 80
-    nodePort: 30031
+    nodePort: 32337
   - name: api
     protocol: TCP
     port: 8000
-    nodePort: 30032
+    nodePort: 32338
   - name: prometheus
     protocol: TCP
     port: 8080
-    nodePort: 30033
+    nodePort: 32339

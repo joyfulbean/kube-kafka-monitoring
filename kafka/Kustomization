@@ -1,5 +1,12 @@
 resources:
-- broker-config.yml
+- kafka-config.yml
 - kafka-headless.yml
 - bootstrap-svc.yml
-- kafka.yml
+- kafka-deploy.yml
+- ./broker-outside-svc/broker0-outside-svc.yml
+- ./broker-outside-svc/broker1-outside-svc.yml 
+- ./broker-outside-svc/broker2-outside-svc.yml 
+- ./broker-outside-svc/broker3-outside-svc.yml 
+- ./broker-outside-svc/broker4-outside-svc.yml 
+- ./broker-outside-svc/broker5-outside-svc.yml 
+- ./broker-outside-svc/broker6-outside-svc.yml 

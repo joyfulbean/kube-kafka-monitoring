@@ -1,5 +1,0 @@
-resources:
-- alert-config.yml
-- alert-template-config.yml
-- alertmanager.yml
-- alert-svc.yml 

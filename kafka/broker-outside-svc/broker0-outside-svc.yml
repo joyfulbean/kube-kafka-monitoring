@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: outside-1
+  namespace: kafka
+spec:
+  selector:
+    app: kafka
+    kafka-broker-id: "0"
+  ports:
+  - protocol: TCP
+    targetPort: 5556
+    port: 32401
+    nodePort: 30000
+  type: NodePort
