@@ -122,7 +122,7 @@ data:
 
       - job_name: 'kafka-jmx-exporter'
         static_configs:
-          - targets: ['outside-1.kafka.svc.cluster.local:5556']
+          - targets: ['jmx.kafka.svc.cluster.local:5556']
       
       - job_name: 'kafka-exporter'
         static_configs:
