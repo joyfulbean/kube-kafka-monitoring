@@ -14,6 +14,12 @@ $SUDO yum -y install git
 #
 kubectl apply -k rbac-namespace-default
 kubectl apply -k zookeeper/
+
+#time=`date +"%H:%M:%S"`
+
+echo "wait for 20 seconds"
+sleep 20s
+echo "start kafka"
 kubectl apply -k kafka/
 
 #
