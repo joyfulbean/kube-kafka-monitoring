@@ -6,6 +6,8 @@ resources:
 - ./kafka-exporter/kafka-exporter-deploy.yml
 - ./kafka-exporter/kafka-exporter-svc.yml
 - ./jmx-exporter/kafka-jmx-metrics-config.yml
+- ./kminions/kminion-svc.yml
+- ./kminions/kminion-deploy.yml
 
 images:
 - name: danielqsj/kafka-exporter

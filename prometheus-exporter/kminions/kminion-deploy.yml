@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kminion
+  namespace: kafka
+  labels: &labels
+    app: kminion
+spec:
+  replicas: 1
+  selector:
+    matchLabels: *labels
+  template:
+    metadata:
+      labels: *labels
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: /metrics
+    spec:
+      containers:
+      - name: kminion
+        image: quay.io/cloudhut/kminion:v2.1.0@sha256:99e3217ec4a6a61a0eb68da86d3f2c16fa9847a6db8498fea74044935096353b
+        env:
+        - name: TELEMETRY_HOST
+          value: 0.0.0.0
+        - name: TELEMETRY_PORT
+          value: "8080"
+        - name: EXPORTER_IGNORE_SYSTEM_TOPICS
+          value: "true"
+        - name: EXPORTER_NAMESPACE
+          value: kminion
+        - name: LOG_LEVEL
+          value: info
+        - name: KAFKA_BROKERS
+          value: bootstrap:9092
+        - name: KAFKA_CONSUMER_OFFSETS_TOPIC_NAME
+          value: __consumer_offsets
+        ports:
+        - name: metrics
+          containerPort: 8080
