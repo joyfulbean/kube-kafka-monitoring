@@ -6,6 +6,17 @@ This repository seeks to provide:
  * Production-worthy Kafka setup for reproducing error and loading test 
  * End-to-End monitoring system for Kafka
 
+## Quick Start 
+
+Install all monitoring tools and kafka cluster at once
+
+`./install-all.sh`
+
+Uninstall all at once
+
+`./uninstall-all.sh`
+
+
 ## Getting started
 
 Only tested in Amazon Linux2 EC2
@@ -64,6 +75,7 @@ kubectl apply -k linkedin-burrow/
 kubectl apply -k prometheus-exporter 
 kubectl apply -k prometheus/
 kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus-exporter/jmx-exporter/kafka-jmx-exporter-patch.yml )"
+kubectl apply -k grafana/
 ```
 
  * [cmak](./cmak/)
