@@ -107,6 +107,7 @@ kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus-expo
      * [Grafana Dashboard ID for jmx](https://grafana.com/grafana/dashboards/11131):11131
  * [grafana-dashboard](https://github.com/grafana/grafana)
      * visualize metrics collected in prometheus
+     * [reference for kube grafana job](https://github.com/giantswarm/prometheus/blob/master/manifests-all.yaml)
 
 ## Version
 

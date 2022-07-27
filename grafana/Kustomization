@@ -1,2 +1,5 @@
 resources:
 - grafana-deploy.yml
+- grafana-svc.yml
+- import-dashboard-job.yml
+- topic-dashboard.yml
