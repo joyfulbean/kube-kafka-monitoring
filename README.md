@@ -39,6 +39,8 @@ Minikube Dashboar URL: http://ec2-ip:8001/api/v1/namespaces/kubernetes-dashboard
 #### Start Kafka Clusters 
 
 ```
+git clone https://github.com/joyfulbean/kube-kafka-monitoring.git
+cd kube-kafka-monitoring
 kubectl apply -k rbac-namespace-default
 kubectl apply -k zookeeper/
 kubectl apply -k kafka/
