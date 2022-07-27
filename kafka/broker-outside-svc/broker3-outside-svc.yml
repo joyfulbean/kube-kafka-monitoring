@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: outside-1
+  name: outside-3
   namespace: kafka
 spec:
   selector:
     app: kafka
-    kafka-broker-id: "1"
+    kafka-broker-id: "3"
   ports:
   - protocol: TCP
     targetPort: 5556

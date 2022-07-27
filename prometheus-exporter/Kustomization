@@ -1,2 +1,12 @@
 resources:
--  
+- ./node-exporter/prometheus-node-exporter.yml  
+- ./kube-metric-exporter/kube-state-deploy.yml 
+- ./kube-metric-exporter/kube-state-svcaccount.yml
+- ./kube-metric-exporter/kube-state-svc.yml
+- ./kafka-exporter/kafka-exporter-deploy.yml
+- ./kafka-exporter/kafka-exporter-svc.yml
+- ./jmx-exporter/kafka-jmx-metrics-config.yml
+
+images:
+- name: danielqsj/kafka-exporter
+  newTag: latest

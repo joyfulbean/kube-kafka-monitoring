@@ -73,43 +73,45 @@ kubectl --namespace kafka patch statefulset kafka --patch "$(cat prometheus/kafk
 ```
 
  * [cmak](./cmak/)
-   * reference: https://github.com/yahoo/CMAK
- * [cmak](./cmak/)
-   * reference: https://github.com/yahoo/CMAK
- * [cmak](./cmak/)
-   * reference: https://github.com/yahoo/CMAK
-   * http://ec2-ip:32401/metrics
+   * [reference for CMAK](https://github.com/yahoo/CMAK)
+   * make topic here and manage the cluster 
+   * To Add Cluster Use Zookeeper Cluster IP: zookeeper.kafka:2181 
+   * Dashboard URL: (ec2-ip):32336
+ * [burrow](./burrow/)
+   * [reference for burrow](https://github.com/linkedin/Burrow)
+   * can monitor the consumer lag
+   * [check the rule set here](https://github.com/linkedin/Burrow/wiki/Consumer-Lag-Evaluation-Rules)
+   * Dashboard URL: (ec2-ip):32337
+   * Metric URL: (ec2-ip):32338/metrics
+ * [prometheus](./prometheus/)
+   * [reference for proemetheus](https://github.com/prometheus/prometheus)
+   * check the metrics here.
+   * to add more target, add targets in prometheus-config.yml
+   * Dashboard URL: (ec2-ip):32334
+ * [prometheus-exporter](./prometheus-exporter/)
+   * [reference for kafka-exporter](https://github.com/danielqsj/kafka_exporter)
+     * gather kafka metric.  
+     * to add more server, add args in kafka-exporter-deploy.yml
+     * Metric URL: (ec2-ip):30055/metrics
+     * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/7589): 7589 
+   * [reference for node exporter](https://github.com/prometheus/node_exporter)
+     * gather host server metric
+     * Metric URL: (ec2-ip):30088/metrics
+     * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/1860): 1860
+   * [reference for kube-state-metric exporter](https://github.com/kubernetes/kube-state-metrics)
+     * gather pods metric
+     * Metric URL: (ec2-ip):port/metrics
+     * [Grafana Dashboard ID](https://grafana.com/grafana/dashboards/6417):6417
+   * [reference for kminion](https://github.com/redpanda-data/kminion)
+     * gather kafka consumr lag, cluster, topic metric
+     * Metric URL: (ec2-ip):30077/metrics
+     * [Grafana Dashboard ID for topic](https://grafana.com/grafana/dashboards/14013):14013
+     * [Grafana Dashboard ID for consumer group](https://grafana.com/grafana/dashboards/14014):14014
+     * [Grafana Dashboard ID for cluster](https://grafana.com/grafana/dashboards/14012):14012
+   * [reference for jmx-exporter]
 
-<open-source>
-https://github.com/prometheus/jmx_exporter/tree/add7897f513f3981f91f013cd7f3617a532c7b79
-https://github.com/solsson/kafka-cluster-metrics
-
-#
-## burrow (브로커 config에 추가 필요)
-#
-
-https://kubernetes.io/ko/docs/concepts/services-networking/service/
-
-http://54.241.141.202:30031/admin
-
-<opensource>
-https://github.com/linkedin/Burrow
-
-#
-## kminion
-#
-kubectl apply -k kminions/
-http://54.241.141.202:30077/metrics
-
-<opensource>
-https://github.com/redpanda-data/kminion
-
-#
-## GRAFANA + Prometheus
-# 
-https://github.com/giantswarm/prometheus
-
-
+ * [grafana-dashboard](https://github.com/grafana/grafana)
+    
 
 ## Version
 
