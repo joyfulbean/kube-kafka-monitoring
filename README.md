@@ -20,8 +20,9 @@ Uninstall all at once
 ## Getting started
 
 Only tested in Amazon Linux2 EC2
-Recommend t2.xlarge (4CPU, 16GB) at least. 
-[minikube](https://minikube.sigs.k8s.io/docs/drivers/none/) recommend t2.medium but too many pods and load only to use t2.medium. 
+
+* Recommend t2.xlarge (4CPU, 16GB) at least. 
+* [minikube](https://minikube.sigs.k8s.io/docs/drivers/none/) recommend t2.medium but too many pods and load only to use t2.medium. 
 
 #### [Set up for servers](https://github.com/joyfulbean/myset/blob/master/joyful_shell.sh)
 
