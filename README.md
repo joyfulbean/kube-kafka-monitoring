@@ -12,7 +12,6 @@ Install all monitoring tools and kafka cluster at once
 
 ```
 git clone https://github.com/joyfulbean/kube-kafka-monitoring.git
-cd kube-kafka-monitoring
 ./install-all.sh
 ```
 
