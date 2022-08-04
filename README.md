@@ -30,6 +30,7 @@ Only tested in Amazon Linux2 EC2
 git clone https://github.com/joyfulbean/myset
 cd myset
 ./joyful_shell.sh
+./updaterc.sh
 ```
 >From now, kubectl is shortened to `kp`
 
@@ -42,13 +43,15 @@ git clone https://github.com/joyfulbean/myset
 
 # start minikube
 sudo su - 
-minikube start --vm-driver=none
+minikube start --driver=none --kubernetes-version=v1.23.0 --force
 
 # start minikube dashboard
-minikube dashboard --url
 kubectl proxy --address='0.0.0.0' --disable-filter=true &
+minikube dashboard --url
 ```
 Minikube Dashboar URL: http://ec2-ip:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+
+> Due to Recent [issue](https://github.com/kubernetes/minikube/issues/14724) related to minikube, must put `version info`.
 
 #### Start Kafka Clusters 
 
