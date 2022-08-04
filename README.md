@@ -73,6 +73,8 @@ kubectl apply -k kafka/
    
 Out of Cluster access is possible through [broker-outside-svc](https://github.com/joyfulbean/kube-kafka-monitoring/tree/master/kafka/broker-outside-svc)
 
+**Use ec2-ip:31000 for kafka and ec2-ip:31111 for zookeeper"
+
 ## Monitoring
 
 ```
