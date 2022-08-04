@@ -126,6 +126,6 @@ kubectl apply -k grafana/
 
 ## Version
 
- * Kafka
- * Kubernetes
+ * Kafka 
+ * Kubernetes : latest
  * Jmeter
