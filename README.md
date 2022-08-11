@@ -129,7 +129,7 @@ kubectl apply -k grafana/
      * visualize metrics collected in prometheus
      * [reference for kube grafana job](https://github.com/giantswarm/prometheus/blob/master/manifests-all.yaml)
 
-## Jmeter Load Test
+## Jmeter For Load Test
 
 https://www.blazemeter.com/blog/kafka-testing for the load test 
 
