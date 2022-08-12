@@ -131,7 +131,7 @@ kubectl apply -k grafana/
 
 ## Jmeter For Load Test
 
-https://www.blazemeter.com/blog/kafka-testing for the load test 
+https://www.blazemeter.com/blog/kafka-testing  
 
 ## Version
 
