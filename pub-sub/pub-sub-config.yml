@@ -1,0 +1,35 @@
+---
+kind: ConfigMap
+metadata:
+  name: produce-consume
+  namespace: test-kafka
+apiVersion: v1
+data:
+
+  setup.sh: |-
+    touch /tmp/testlog
+    tail -f /tmp/testlog
+  test.sh: |-
+    exec >> /tmp/testlog
+    exec 2>&1
+    # As low as in kafkacat based test didn't work, but this value can likely be squeezed
+    PC_WAIT=2.0
+    UNIQUE="${HOSTNAME}@$(date -u -Ins)"
+    echo "Test $UNIQUE" >> /shared/produce.tmp
+    sleep $PC_WAIT
+    LAST=$(tail -n 1 /shared/consumed.tmp)
+    [ -z "$LAST" ] && echo "Nothing consumed yet" && exit 1
+    # Haven't found how to get message timestamp in console-consumer, see kafkacat based test instead
+    LAST_MSG=$LAST
+    if [[ "$LAST_MSG" != *"$UNIQUE" ]]; then
+      echo "Last message (at $(date +%FT%T)) isn't from this test run ($UNIQUE):"
+      echo "$LAST_MSG"
+      exit 11
+    fi
+    echo "OK ($LAST_MSG at $(date +%FT%T))"
+    # We haven't asserted that the consumer works, so we'll just have to assume that it will exit if it fails
+    exit 0
+  quit-on-nonzero-exit.sh: |-
+    exec >> /tmp/testlog
+    exec 2>&1
+    exit 0

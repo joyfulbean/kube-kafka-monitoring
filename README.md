@@ -128,6 +128,7 @@ kubectl apply -k grafana/
  * [grafana-dashboard](https://github.com/grafana/grafana)
      * visualize metrics collected in prometheus
      * [reference for kube grafana job](https://github.com/giantswarm/prometheus/blob/master/manifests-all.yaml)
+     * Metric URL: (ec2-ip):32335
 
 ## Jmeter For Load Test
 

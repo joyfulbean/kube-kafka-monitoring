@@ -1,0 +1,4 @@
+resources:
+- pub-sub-config.yml
+- creating-topic.yml
+- pub-sub.yml
