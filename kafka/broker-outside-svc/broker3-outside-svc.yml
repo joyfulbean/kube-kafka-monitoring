@@ -9,7 +9,7 @@ spec:
     kafka-broker-id: "3"
   ports:
   - protocol: TCP
-    targetPort: 5556
-    port: 32401
-    nodePort: 30003
+    targetPort: 9094
+    port: 32403
+    nodePort: 32403
   type: NodePort

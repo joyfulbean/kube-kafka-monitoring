@@ -27,9 +27,21 @@ data:
       fi
 
       [ -z "$ADVERTISE_ADDR" ] && echo "ADVERTISE_ADDR is empty, will advertise detected DNS name"
-      OUTSIDE_HOST=$(kubectl get node "$NODE_NAME" -o jsonpath='{.status.addresses[?(@.type=="InternalIP")].address}')
+      OUTSIDE_HOST=$(kubectl get node "$NODE_NAME" -o jsonpath='{.status.addresses[?(@.type=="ExternalIP")].address}')
       OUTSIDE_PORT=$((32400 + ${KAFKA_BROKER_ID}))
-      SEDS+=("s|#init#advertised.listeners=PLAINTEXT://#init#|advertised.listeners=PLAINTEXT://${ADVERTISE_ADDR}:9092,OUTSIDE://${OUTSIDE_HOST}:${OUTSIDE_PORT}|")
+      INSIDE_HOST=$"kafka-${KAFKA_BROKER_ID}.kafka.kafka.svc.cluster.local"
+      INSIDE_PORT=9092
+      
+      #SEDS+=("s|#init#advertised.listeners=PLAINTEXT://#init#|advertised.listeners=PLAINTEXT://${INSIDE_HOST}:${INSIDE_PORT},OUTSIDE://${OUTSIDE_HOST}:${OUTSIDE_PORT}|")
+
+      SEDS+=("s|#init#listeners=PLAINTEXT://#init#|listeners=PLAINTEXT://${ADVERTISE_ADDR}:${INSIDE_PORT},OUTSIDE://${ADVERTISE_ADDR}:9094|")
+
+      SEDS+=("s|#init#advertised.listeners=PLAINTEXT://#init#|advertised.listeners=PLAINTEXT://${ADVERTISE_ADDR}:9092,OUTSIDE://54.219.253.2:${OUTSIDE_PORT}|")
+      
+      #INSIDE_HOST=$"kafka-${KAFKA_BROKER_ID}.kafka.kafka.svc.cluster.local"
+      #INSIDE_PORT=9092
+      #SEDS+=("s|#init#listeners=PLAINTEXT://#init#|listeners=PLAINTEXT://${INSIDE_HOST}:${INSIDE_PORT}|")
+
       ANNOTATIONS="$ANNOTATIONS kafka-listener-outside-host=$OUTSIDE_HOST kafka-listener-outside-port=$OUTSIDE_PORT"
 
       if [ ! -z "$LABELS" ]; then
@@ -80,18 +92,19 @@ data:
     #     listeners = listener_name://host_name:port
     #   EXAMPLE:
     #     listeners = PLAINTEXT://your.host.name:9092
-    #listeners=PLAINTEXT://:9092
-    listeners=PLAINTEXT://:9092,OUTSIDE://:9094
+
+  
+    #init#listeners=PLAINTEXT://#init#
 
     # Hostname and port the broker will advertise to producers and consumers. If not set, 
     # it uses the value for "listeners" if configured.  Otherwise, it will use the value
     # returned from java.net.InetAddress.getCanonicalHostName().
-    #advertised.listeners=PLAINTEXT://your.host.name:9092
-    #init#advertised.listeners=PLAINTEXT://#init#
 
+    #init#advertised.listeners=PLAINTEXT://#init#
+    
     # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
     #listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
-    listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL,OUTSIDE:PLAINTEXT
+    listener.security.protocol.map=PLAINTEXT:PLAINTEXT,OUTSIDE:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
     inter.broker.listener.name=PLAINTEXT
 
     # The number of threads that the server uses for receiving requests from the network and sending responses to the network

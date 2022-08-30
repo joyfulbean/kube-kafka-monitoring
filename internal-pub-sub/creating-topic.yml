@@ -12,11 +12,16 @@ spec:
         image: solsson/kafka:native-cli@sha256:fbf29c59182fb87921c5199783d2d5796856ecbfe34a9c03eca658b3cf50f3c4
         command:
         - ./bin/kafka-topics.sh
-        - --bootstrap-server
-        -   bootstrap.kafka.svc.cluster.local:9092
+        - --zookeeper
+        -   zookeeper.kafka:2181
         - --create
+        - --if-not-exists
         - --topic
-        -   test-produce-consume
+        -   test-produce-consume1
+        - --partitions
+        -   "1"
+        - --replication-factor
+        -   "7"
         resources:
           limits:
             cpu: 100m

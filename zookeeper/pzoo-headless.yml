@@ -1,9 +1,13 @@
+## A headless service to create DNS records
 apiVersion: v1
 kind: Service
 metadata:
   name: pzoo
   namespace: kafka
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
 spec:
+  publishNotReadyAddresses: true
   ports:
   - port: 2888
     name: peer

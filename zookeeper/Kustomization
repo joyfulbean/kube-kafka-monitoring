@@ -1,5 +1,5 @@
 resources:
 - zoo-config.yml
-- pzoo-svc.yml
-- zoo-headless.yml
+- pzoo-headless.yml
+- zoo-svc.yml
 - pzoo-stateful.yml
