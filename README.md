@@ -39,6 +39,7 @@ cd myset
 ```
 # install minikube
 git clone https://github.com/joyfulbean/myset
+cd myset
 ./minikubeset.sh
 
 # start minikube
@@ -73,7 +74,11 @@ kubectl apply -k kafka/
    
 Out of Cluster access is possible through [broker-outside-svc](https://github.com/joyfulbean/kube-kafka-monitoring/tree/master/kafka/broker-outside-svc)
 
-**Use ec2-ip:31000 for kafka and ec2-ip:31111 for zookeeper"
+* Zookeeper outside access is not allowed in this repo. You need to create.
+* Zookeeper inside access is available. Use zookeeper:2181
+
+* Kafka outside access is available. Use (ec2-public-ip:32400), (ec2-public-ip:32401),,,, and so on
+* Kafka Internal access is available. Use bootstrap.kafka:9092
 
 ## Monitoring
 
@@ -132,7 +137,19 @@ kubectl apply -k grafana/
 
 ## Jmeter For Load Test
 
-https://www.blazemeter.com/blog/kafka-testing  
+##### [Jmeter set for Mac](./jmeter)
+
+## Kafka Inside Cluster Pub-Sub using pod
+
+```
+kubectl -k pub-sub
+```
+
+It creates topic and can simply test pub-sub to check whether internal kafka communication works. 
+
+## Jenkins
+
+## Kafka Cluster usding Kops
 
 ## Version
 
